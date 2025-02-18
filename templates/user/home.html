@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home</title>
+    
+    <!-- Bootstrap CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+
+    <style>
+        body {
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .welcome-text {
+            font-size: 3rem;
+            font-weight: bold;
+            color: white;
+            opacity: 0;
+            transform: translateY(-50px);
+            animation: fadeInDown 1.5s ease-in-out forwards;
+        }
+
+        @keyframes fadeInDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .btn-custom {
+            background-color: white;
+            color: #ff4757;
+            font-weight: bold;
+            border-radius: 10px;
+            padding: 10px 20px;
+            text-decoration: none;
+        }
+
+        .btn-custom:hover {
+            background-color: #ff6f61;
+            color: white;
+            transform: scale(1.05);
+            transition: 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="text-center">
+        <h1 class="welcome-text"><i class="bi bi-house-door-fill"></i> Welcome to Home,  </h1>
+        <p class="lead text-white">Experience the best services with us.</p>
+        <a href="{% url 'user:login' %}" class="btn btn-custom mt-3"><i class="bi bi-box-arrow-right"></i> Get Started</a>
+        <a href="{% url 'user:logout' %}" class="btn btn-custom mt-3"><i class="bi bi-box-arrow-left"></i> Logout</a>
+    </div>
+
+</body>
+</html>
