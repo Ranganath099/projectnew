@@ -34,7 +34,7 @@ def user_login(request):
                 login(request, user)
                 if hasattr(user, 'priest_profiles') and user.priest_profiles.exists():
                     # Redirect to the priest dashboard
-                    return redirect("/user/dashboard/")
+                    return redirect("user:priest-dashboard")
                 else:
                     # Redirect to the regular user home page
                     
@@ -66,7 +66,7 @@ def priest_dashboard(request):
         return redirect("/user/home/") # If user is not a priest, redirect them to the normal home
 
     # Render the priest-specific dashboard page
-    return render(request, "user/dashboard.html")
+    return render(request, "dashboard/partials/priest/priest_sidebar.html")
 
 
 
