@@ -11,4 +11,6 @@ urlpatterns = [
     path('home/', views.user_home, name='home'),
     path('priest-dashboard/', views.priest_dashboard, name='priest-dashboard'),
     path('priest-profile/', views.priest_profile, name='priest-profile'),
+    path('nav/', views.navbar, name='nav'),
+
 ]
