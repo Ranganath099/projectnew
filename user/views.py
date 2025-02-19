@@ -89,3 +89,6 @@ def priest_profile(request):
 def user_logout(request):
     logout(request)
     return redirect("user:login")
+
+def navbar(request):
+    return render(request,"dashboard/navbar.html")
