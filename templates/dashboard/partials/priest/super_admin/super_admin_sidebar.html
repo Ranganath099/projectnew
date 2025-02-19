@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Superuser Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 56px;
+            z-index: 1000;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            top: 56px; /* Below the navbar */
+            left: 0;
+            height: calc(100vh - 56px); /* Take full height minus the navbar */
+            width: 250px;
+            background-color: #343a40;
+            color: white;
+            overflow-y: auto;
+            padding-top: 20px;
+        }
+
+        .sidebar a {
+            padding: 15px;
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            display: block;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .sidebar a:hover {
+            background-color: #495057;
+        }
+
+        /* Main Content */
+        .content {
+            margin-left: 250px; /* Matches sidebar width */
+            padding: 20px;
+            padding-top: 76px; /* Offset for the navbar */
+        }
+
+        /* Section visibility */
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    
+    <nav class="navbar navbar-dark bg-dark px-3">
+        <div class="container-fluid d-flex align-items-center">
+            <a class="navbar-brand" href="#">📊 Superuser Dashboard</a>
+            <input class="form-control search-bar mx-3" type="text" placeholder="Search...">
+            <a href="{% url 'user:logout' %}" class="btn btn-danger">Logout</a>
+        </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <a onclick="showSection('dashboard')">🏠 Dashboard</a>
+        <a onclick="showSection('users')">👤 Users</a>
+        <a onclick="showSection('priests')">📿 Priests</a>
+        <a onclick="showSection('analytics')">📈 Analytics</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content">
+        <div id="dashboard" class="section">
+            <h1>Dashboard Overview</h1>
+            <p>Welcome to the Superuser dashboard. Here, you can manage users, priests, and view analytics.</p>
+        </div>
+        <div id="users" class="section hidden">
+            <h1>User Management</h1>
+            <p>Manage users from this section.</p>
+        </div>
+        <div id="priests" class="section hidden">
+            <h1>Priest Management</h1>
+            <p>Manage priests and their details here.</p>
+        </div>
+        <div id="analytics" class="section hidden">
+            <h1>Analytics Overview</h1>
+            <p>View detailed analytics and reports here.</p>
+        </div>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.add('hidden');
+            });
+            document.getElementById(sectionId).classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
